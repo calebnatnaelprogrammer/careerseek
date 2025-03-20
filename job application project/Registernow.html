@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Registration</title>
+  <link rel="stylesheet" href="registernow.css">
+  <link rel="icon" href="favicon-removebg-preview.png" type="image/jpg">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1 class="title">Create Your Account</h1>
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <div class="input-group">
+          <input type="hidden" name="access_key" value="71dbdfff-15b4-4e4a-861b-efeadee9c126">
+          <label for="username">Username</label>
+          <input name="name" required type="text" id="name" name="username" required placeholder="Choose a username">
+          <span class="input-feedback" id="usernameFeedback"></span>
+        </div>
+
+        <div class="input-group">
+          <label for="email" >Email</label>
+          <input name="email" requiredtype="email" id="email" name="email" required placeholder="Enter your email">
+          <span class="input-feedback" id="emailFeedback"></span>
+        </div>
+
+        <div class="input-group">
+          <label for="message" >message</label>
+          <input  name="text area" required type="text" id="password" name="message" required placeholder="Send a message">
+          <span class="input-feedback" id="passwordFeedback"></span>
+        </div>
+
+        <div class="submit-container">
+          <button type="submit" class="submit-btn"><a href="welcome.html">Register now</a></button>
+        </div>
+
+        <div class="redirect-link">
+          <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://smtpjs.com/v3/smtp.js"> </script>
+  <script src="script.js"></script>
+ 
+ 

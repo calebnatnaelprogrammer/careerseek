@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Job Portal</title>
+    <link rel="icon" href="favicon-removebg-preview.png" type="image/jpg">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; color: #4a90e2; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, select, button { width: 100%; padding: 10px; font-size: 16px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background: #4a90e2; color: white; border: none; cursor: pointer; margin-top: 20px; }
+        button:hover { background: #357ABD; }
+        .error { color: red; font-size: 14px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Register</h1>
+        <form id="registerForm">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+            <label>Username:</label>
+            <input type="text" id="username" placeholder="Choose a username" required>
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <span class="error" id="emailError">Invalid email format</span>
+
+            <label>Password:</label>
+            <input type="password" id="password" placeholder="Create a password" required>
+            <span class="error" id="passwordError">Password must be at least 6 characters</span>
+
+            <label>Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label>Gender:</label>
+            <select id="gender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Profile Picture:</label>
+            <input type="file" id="profilePic" accept="image/*">
+
+            <label>Preferred Job Category:</label>
+            <select id="jobCategory">
+                <option value="IT">IT & Software</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Resume Upload:</label>
+            <input type="file" id="resume" accept=".pdf,.doc,.docx">
+
+            <label>
+                <input type="checkbox" id="terms"> I agree to the Terms & Conditions
+            </label>
+
+            <button   type="button" onclick="registerUser()">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function registerUser() {
+            let fullName = document.getElementById("fullName").value;
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let phone = document.getElementById("phone").value;
+            let dob = document.getElementById("dob").value;
+            let gender = document.getElementById("gender").value;
+            let jobCategory = document.getElementById("jobCategory").value;
+            let terms = document.getElementById("terms").checked;
+
+            let emailError = document.getElementById("emailError");
+            let passwordError = document.getElementById("passwordError");
+
+            emailError.style.display = "none";
+            passwordError.style.display = "none";
+
+            // Email validation
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                emailError.style.display = "block";
+                return;
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                passwordError.style.display = "block";
+                return;
+            }
+
+            if (!terms) {
+                alert("You must agree to the Terms & Conditions.");
+                return;
+            }
+
+            // Save user data in local storage
+            let userData = {
+                fullName, username, email, phone, dob, gender, jobCategory
+            };
+            localStorage.setItem("user", JSON.stringify(userData));
+
+            alert("Registration Successful! Redirecting to Settings...");
+            window.location.href = "setting.html";
+        }
+    </script>
+
+</body>
+</html>

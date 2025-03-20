@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Settings with Background Change</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .settings-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .settings-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      transform: translateY(-50px);
+      transition: transform 0.3s ease;
+    }
+
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: black;
+    }
+
+    .settings-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .settings-form label {
+      margin-bottom: 8px;
+    }
+
+    .settings-form input {
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .profile-btn {
+      background-color: #2196F3;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .profile-btn:hover {
+      background-color: #0b7dda;
+    }
+
+    .random-symbols {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .profile-info {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      display: inline-block;
+      background-color: #f9f9f9;
+      width: 100%;
+    }
+
+    .background-upload {
+      margin-top: 20px;
+    }
+
+    .background-upload input {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="settings-btn" onclick="openSettings()">Settings</button>
+
+  <!-- The Modal -->
+  <div id="settingsModal" class="settings-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeSettings()">&times;</span>
+      <h2>Edit Profile</h2>
+      
+      <div class="settings-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        
+        <label for="username">Username (Random Symbols)</label>
+        <input type="text" id="username" placeholder="Enter your username (Random Symbols)">
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        
+        <button class="profile-btn" onclick="saveSettings()">Save Settings</button>
+      </div>
+
+      <div class="background-upload">
+        <label for="backgroundImage">Change Background Image</label>
+        <input type="file" id="backgroundImage" accept="image/*" onchange="changeBackgroundImage(event)">
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-info">
+    <h3>Your Profile (Random Symbols):</h3>
+    <p>Name: <span id="profileName">John Doe</span></p>
+    <p>Username: <span id="profileUsername" class="random-symbols">✩✵✬✪✺✵✱</span></p>
+    <p>Email: <span id="profileEmail">guest@example.com</span></p>
+  </div>
+
+
+
+  <script>
+    // Function to generate random symbols
+    function generateRandomSymbols(length) {
+      
+
+    }
+
+    // Load random symbols when the page loads
+    window.onload = function() {
+      const name = localStorage.getItem('name') || "John Doe"; // Default name
+      const username = localStorage.getItem('username') || generateRandomSymbols(6);
+      const email = localStorage.getItem('email') || "guest@example.com"; // Default email
+      const background = localStorage.getItem('background') || ''; // Background from local storage
+
+      // Display the stored data or default values
+      document.getElementById('profileName').textContent = name;
+      document.getElementById('profileUsername').textContent = username;
+      document.getElementById('profileEmail').textContent = email;
+
+      // Set background image if saved
+      if (background) {
+        document.body.style.backgroundImage = `url(${background})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundPosition = 'center';
+      }
+    };
+
+    // Open the settings modal
+    function openSettings() {
+      const modal = document.getElementById('settingsModal');
+      modal.style.display = 'block';
+      setTimeout(() => {
+        modal.style.opacity = '1';
+        document.querySelector('.modal-content').style.transform = 'translateY(0)';
+      }, 10);
+      
+      // Pre-fill the form with current profile data
+      document.getElementById('name').value = localStorage.getItem('name') || '';
+      document.getElementById('username').value = localStorage.getItem('username') || '';
+      document.getElementById('email').value = localStorage.getItem('email') || '';
+    }
+
+    // Close the settings modal
+    function closeSettings() {
+      const modal = document.getElementById('settingsModal');
+      modal.style.opacity = '0';
+      document.querySelector('.modal-content').style.transform = 'translateY(-50px)';
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    }
+
+    // Save settings and update profile
+    function saveSettings() {
+      const name = document.getElementById('name').value;
+      const username = document.getElementById('username').value || generateRandomSymbols(6); // Default to random if left empty
+      const email = document.getElementById('email').value;
+
+      if (name && email) {
+        localStorage.setItem('name', name);
+        localStorage.setItem('username', username);
+        localStorage.setItem('email', email);
+        
+        // Update the profile display
+        document.getElementById('profileName').textContent = name;
+        document.getElementById('profileUsername').textContent = username;
+        document.getElementById('profileEmail').textContent = email;
+        
+        closeSettings();
+      } else {
+        alert('Please fill out the required fields.');
+      }
+    }
+
+    // Load a random profile with random symbols
+    function loadRandomProfile() {
+      const randomUsername = generateRandomSymbols(6);
+      const randomEmail = generateRandomSymbols(6) + "@example.com"; // Random email for fun
+      const randomName = "User " + generateRandomSymbols(4);
+
+      localStorage.setItem('name', randomName);
+      localStorage.setItem('username', randomUsername);
+      localStorage.setItem('email', randomEmail);
+      
+      // Update the profile display with random symbols
+      document.getElementById('profileName').textContent = randomName;
+      document.getElementById('profileUsername').textContent = randomUsername;
+      document.getElementById('profileEmail').textContent = randomEmail;
+    }
+
+    // Change background image
+    function changeBackgroundImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageUrl = e.target.result;
+          localStorage.setItem('background', imageUrl); // Save background image URL to localStorage
+          document.body.style.backgroundImage = `url(${imageUrl})`;
+          document.body.style.backgroundSize = 'cover';
+          document.body.style.backgroundPosition = 'center';
+        };
+        reader.readAsDataURL(file); // Convert the image to a data URL
+      }
+    }
+  </script>
+
+</body>
+</html>

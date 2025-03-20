@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>careerseek</title>
+    <link rel="icon" href="favicon-removebg-preview.png" type="image/jpg">
+    <link rel="stylesheet" href="searchjobs.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
+        h1 { text-align: center; color: #4a90e2; }
+        #searchBar { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 20px; }
+        ul { list-style: none; padding: 0; max-height: 400px; overflow-y: auto; background: white; padding: 10px; border-radius: 5px; }
+        li { padding: 10px; margin: 5px 0; background: white; border-radius: 5px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="welcome.html"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-search"></i> Search Jobs</a>
+        <a href="createjobs.html"><i class="fas fa-plus-circle"></i> Create Jobs</a>
+        <a href="setting.html"><i class="fas fa-cog"></i> Settings</a>
+    </nav>
+    <div class="container">
+        <h1>Search for a Job</h1>
+        <input type="text" id="searchBar" onkeyup="searchJobs()" placeholder="Search for a job...">
+        <h2>Job List</h2>
+        <ul id="jobList"></ul>
+        <a href="createjobs.html"
+        ><button style="
+        background: linear-gradient(130deg,red,purple);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        ">Add a Job</button></a>
+    </div>
+
+    <script>
+        function loadJobs() {
+            let jobList = document.getElementById("jobList");
+            let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
+            if (jobs.length === 0) {
+                jobs = ["Software Developer", "Doctor", "Nurse", "Teacher", "Lawyer", "Architect", "Pilot", 
+                        "Electrician", "Plumber", "Data Scientist", "Cybersecurity Analyst", "Chef", "Dentist", 
+                        "Veterinarian", "Journalist", "Police Officer", "Firefighter", "Musician", "Artist"];
+                localStorage.setItem("jobs", JSON.stringify(jobs));
+            }
+
+            jobList.innerHTML = "";
+            jobs.forEach(job => {
+                let li = document.createElement("li");
+                li.textContent = job;
+                jobList.appendChild(li);
+            });
+        }
+
+        function searchJobs() {
+            let input = document.getElementById("searchBar").value.toLowerCase();
+            let jobs = document.querySelectorAll("#jobList li");
+
+            jobs.forEach(job => {
+                job.style.display = job.textContent.toLowerCase().includes(input) ? "" : "none";
+            });
+        }
+
+        window.onload = loadJobs;
+    </script>
+
+</body>
+</html>

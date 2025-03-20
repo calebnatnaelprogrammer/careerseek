@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>careerseek</title>
+    <link rel="stylesheet" href="createjobs.css">
+    <link rel="icon" href="favicon-removebg-preview.png" type="image/jpg">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
+        h1 { text-align: center; color: #4a90e2; }
+        input, button { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="welcome.html"><i class="fas fa-home"></i> Home</a>
+        <a href="searchjobs.html"><i class="fas fa-search"></i> Search Jobs</a>
+        <a href=""><i class="fas fa-plus-circle"></i> Create Jobs</a>
+        <a href="setting.html"><i class="fas fa-cog"></i> Settings</a>
+    </nav>
+    <div class="container">
+        <h1>Add a Job</h1>
+        <input type="text" id="jobInput" placeholder="Enter a job title...">
+        <button onclick="addJob()">Add Job</button>
+        <a href="searchjobs.html"><button>Go to Job Search</button></a>
+    </div>
+
+    <script>
+        function addJob() {
+            let jobInput = document.getElementById("jobInput").value.trim();
+            if (jobInput === "") {
+                alert("Please enter a job title!");
+                return;
+            }
+
+            let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+            if (jobs.includes(jobInput)) {
+                alert("This job is already listed!");
+                return;
+            }
+
+            jobs.push(jobInput);
+            localStorage.setItem("jobs", JSON.stringify(jobs));
+            alert("Job added successfully!");
+            document.getElementById("jobInput").value = "";
+        }
+    </script>
+
+</body>
+</html>

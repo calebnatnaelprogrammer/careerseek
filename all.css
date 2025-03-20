@@ -1,0 +1,99 @@
+.top {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+    display: flex;
+
+}
+body {
+    background-image: url('premium_photo-1701590725721-add548ecdf61.jpeg');  
+    background-size: cover;  
+    background-position: center center;  
+    background-attachment: fixed;  
+    margin: 0;  
+    height: 100vh; 
+  }
+  .li{
+    border-right: 3px solid navy;
+    font-size: large;
+    margin-right: 100px;
+    padding-right: 90px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+  }
+  .l {
+    border-right: 3px solid navy;
+    font-size: x-large;
+    margin-right: 100px;
+    padding-right: 90px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    line-height: normal;
+    
+  }
+  /* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #5b8fb9; /* Color of the scrollbar thumb (the draggable part) */
+    border-radius: 10px; /* Round the corners of the thumb */
+    border: 3px solid #ffffff; /* Optional: add a border around the thumb */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the track (background of the scrollbar) */
+    border-radius: 10px; /* Round the track corners */
+  }
+  
+  /* Optional: Change the appearance on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #4a7d98; /* Change thumb color when hovering */
+  }
+  .main{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px;
+    line-height: 20px;
+    padding: 20px;
+    
+  }
+  ul{
+   
+    border-radius: 5px;
+  }
+  .li{
+    transition: 1s ease;
+}
+.li:hover{
+color: orange;
+font-size: xx-large;
+border-radius: 50px;
+
+}
+  .wrapper
+{
+    margin: 20px;
+}
+.ubuntu-light {
+    font-family: "Ubuntu", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .ubuntu-regular {
+    font-family: "Ubuntu", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+a{
+    text-decoration: none;
+    color:white;
+}
+.line {
+  background: linear-gradient(130deg,black,pink);
+  border-radius: 100%;
+  width: 100%;
+  height: 5px;
+}
+
+
