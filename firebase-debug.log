@@ -1,0 +1,50 @@
+[debug] [2025-03-23T09:22:43.852Z] ----------------------------------------------------------------------
+[debug] [2025-03-23T09:22:43.855Z] Command:       /usr/local/bin/firebase /home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init
+[debug] [2025-03-23T09:22:43.855Z] CLI Version:   13.35.1
+[debug] [2025-03-23T09:22:43.856Z] Platform:      linux
+[debug] [2025-03-23T09:22:43.856Z] Node Version:  v18.5.0
+[debug] [2025-03-23T09:22:43.856Z] Time:          Sun Mar 23 2025 12:22:43 GMT+0300 (East Africa Time)
+[debug] [2025-03-23T09:22:43.857Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-23T09:22:43.864Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-23T09:22:43.865Z] > authorizing via signed-in user (calebhckr@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/natnael/careerseek
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2025-03-23T09:23:07.053Z] Checked if tokens are valid: true, expires at: 1742725169482
+[debug] [2025-03-23T09:23:07.054Z] Checked if tokens are valid: true, expires at: 1742725169482
+[debug] [2025-03-23T09:23:07.062Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2025-03-23T09:23:07.063Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"careerseek","name":"careerseek"}
+[debug] [2025-03-23T09:23:09.543Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2025-03-23T09:23:09.544Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.6619666735325020561"}
+[debug] [2025-03-23T09:23:09.549Z] Checked if tokens are valid: true, expires at: 1742725169482
+[debug] [2025-03-23T09:23:09.550Z] Checked if tokens are valid: true, expires at: 1742725169482
+[debug] [2025-03-23T09:23:09.552Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6619666735325020561 [none]
+[debug] [2025-03-23T09:23:11.375Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6619666735325020561 200
+[debug] [2025-03-23T09:23:11.376Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6619666735325020561 {"name":"operations/create_project.global.6619666735325020561","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","ready":true},"done":true,"error":{"code":9,"message":"Callers must accept Terms of Service","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"TOS","subject":"cloud","description":"Callers must accept Terms of Service"}]}]}}
+[debug] [2025-03-23T09:23:12.263Z] FirebaseError: Callers must accept Terms of Service
+    at OperationPoller.poll (/home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/operation-poller.js:24:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createCloudProject (/home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/management/projects.js:213:29)
+    at async createFirebaseProjectAndLog (/home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/management/projects.js:71:9)
+    at async promptAndCreateNewProject (/home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/features/project.js:32:12)
+    at async doSetup (/home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/features/project.js:89:27)
+    at async init (/home/natnael/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/init/index.js:41:9)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
