@@ -7,6 +7,20 @@
     <link rel="icon" href="favicon-removebg-preview.png" type="image/jpg">
     <link rel="stylesheet" href="searchjobs.css">
     <style>
+                .dun{
+            color: white;
+            background-color: black;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            font-size: 20px;
+            transition: background-color 1s ease, transform 1s ease , color 1s ease;
+        }
+        .dun:hover{
+            color: black;
+            background-color: lightblue;
+        }
         body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
         h1 { text-align: center; color: #4a90e2; }
         #searchBar { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 20px; }
@@ -23,6 +37,7 @@
         <a href="setting.html"><i class="fas fa-cog"></i> Settings</a>
     </nav>
     <div class="container">
+
         <h1>Search for a Job</h1>
         <input type="text" id="searchBar" onkeyup="searchJobs()" placeholder="Search for a job...">
         <h2>Job List</h2>
@@ -35,6 +50,11 @@
         border-radius: 10px;
         ">Add a Job</button></a>
     </div>
+    <a href="ai.html" ><button
+        class="dun"
+           >ask <img  style="width: 20px;
+           height: 20px;" src="10988139.png" alt="">
+   </button></a>
     <audio autoplay loop>
         <source src="Kevin MacLeod_ Ice Flow.mp4" type="audio/mp3">
         Your browser does not support the audio tag.

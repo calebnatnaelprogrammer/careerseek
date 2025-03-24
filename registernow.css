@@ -20,10 +20,11 @@
     width: 100%;
     max-width: 500px;
     padding: 20px;
-    background: white;
+    background: whitesmoke;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
+
   }
   
   /* Form Header */
@@ -80,5 +81,12 @@
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    back
+  background: linear-gradient(130deg, rgb(238, 231, 231),blue,white);
+
+  border: none;
+  border-radius: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: lightgreen;
   }

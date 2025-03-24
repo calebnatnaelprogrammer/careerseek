@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="createjobs.css">
     <link rel="icon" href="favicon-removebg-preview.png" type="image/jpg">
     <style>
+                .dun{
+            color: white;
+            background-color: black;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            font-size: 20px;
+            transition: background-color 1s ease, transform 1s ease , color 1s ease;
+        }
+        .dun:hover{
+            color: black;
+            background-color: lightblue;
+        }
         body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
         h1 { text-align: center; color: #4a90e2; }
         input, button { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
@@ -26,6 +40,11 @@
         <button onclick="addJob()">Add Job</button>
         <a href="searchjobs.html"><button>Go to Job Search</button></a>
     </div>
+    <a href="ai.html" ><button
+        class="dun"
+           >ask <img  style="width: 20px;
+           height: 20px;" src="10988139.png" alt="">
+   </button></a>
     <audio autoplay loop>
         <source src="Kevin MacLeod_ Ice Flow.mp4" type="audio/mp3">
         Your browser does not support the audio tag.

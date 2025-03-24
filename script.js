@@ -31,5 +31,5 @@ document.getElementById('registerForm').addEventListener('submit', function(even
       alert('Registration successful! Redirecting...');
       window.location.href = 'welcome.html'; // Redirect to another page on success
     }
-  });
- 
+  })
+  
